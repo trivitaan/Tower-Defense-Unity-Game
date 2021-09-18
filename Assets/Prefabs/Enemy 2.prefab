@@ -53,12 +53,22 @@ PrefabInstance:
       propertyPath: _moveSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7252416582433018794, guid: b0894807cda8bc1489665d401a9cf8d7,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2450940136304335940, guid: b0894807cda8bc1489665d401a9cf8d7,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 44d7644d2468353429cb72c2bc4053c0,
         type: 3}
+    - target: {fileID: 2450940136304335940, guid: b0894807cda8bc1489665d401a9cf8d7,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2638520182594218183, guid: b0894807cda8bc1489665d401a9cf8d7,
         type: 3}
       propertyPath: m_LocalPosition.x

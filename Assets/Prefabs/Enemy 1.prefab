@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: 2450940136304335940, guid: b0894807cda8bc1489665d401a9cf8d7,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2638520182594218183, guid: b0894807cda8bc1489665d401a9cf8d7,
         type: 3}
