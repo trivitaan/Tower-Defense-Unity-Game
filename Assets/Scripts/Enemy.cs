@@ -83,7 +83,6 @@ public class Enemy : MonoBehaviour
         AudioPlayer.Instance.PlaySFX("hit-enemy");
         if(_currentHealth <= 0)
         {
-            _currentHealth = 0;
             gameObject.SetActive(false);
             AudioPlayer.Instance.PlaySFX("enemy-die");
         }

@@ -28,6 +28,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3836476758525779257, guid: b0894807cda8bc1489665d401a9cf8d7,
+        type: 3}
+      propertyPath: _maxHealth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3836476758525779257, guid: b0894807cda8bc1489665d401a9cf8d7,
+        type: 3}
+      propertyPath: _moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3836476758525779257, guid: b0894807cda8bc1489665d401a9cf8d7,
+        type: 3}
+      propertyPath: _healthBar
+      value: 
+      objectReference: {fileID: 2596443076254292860}
+    - target: {fileID: 3836476758525779257, guid: b0894807cda8bc1489665d401a9cf8d7,
+        type: 3}
+      propertyPath: _healthFill
+      value: 
+      objectReference: {fileID: 5747780700607174300}
+    - target: {fileID: 2450940136304335940, guid: b0894807cda8bc1489665d401a9cf8d7,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2638520182594218183, guid: b0894807cda8bc1489665d401a9cf8d7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -83,31 +108,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2450940136304335940, guid: b0894807cda8bc1489665d401a9cf8d7,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3836476758525779257, guid: b0894807cda8bc1489665d401a9cf8d7,
-        type: 3}
-      propertyPath: _maxHealth
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3836476758525779257, guid: b0894807cda8bc1489665d401a9cf8d7,
-        type: 3}
-      propertyPath: _moveSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3836476758525779257, guid: b0894807cda8bc1489665d401a9cf8d7,
-        type: 3}
-      propertyPath: _healthBar
-      value: 
-      objectReference: {fileID: 2596443076254292860}
-    - target: {fileID: 3836476758525779257, guid: b0894807cda8bc1489665d401a9cf8d7,
-        type: 3}
-      propertyPath: _healthFill
-      value: 
-      objectReference: {fileID: 5747780700607174300}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0894807cda8bc1489665d401a9cf8d7, type: 3}
 --- !u!1 &7854650169081049107 stripped

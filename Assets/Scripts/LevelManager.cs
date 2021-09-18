@@ -58,7 +58,7 @@ public class LevelManager : MonoBehaviour
         int randomIndex = Random.Range(0, _enemyPrefabs.Length);
         string enemyIndexString = (randomIndex + 1).ToString();
 
-        GameObject newEnemyObj = _spawnedEnemies.Find(e => e.gameObject.activeSelf && e.name.Contains(enemyIndexString))?.gameObject;
+        GameObject newEnemyObj = _spawnedEnemies.Find(e => !e.gameObject.activeSelf && e.name.Contains(enemyIndexString))?.gameObject;
 
         if(newEnemyObj == null)
         {
@@ -152,9 +152,10 @@ public class LevelManager : MonoBehaviour
                 continue;
             }
 
+            
+            if(Vector2.Distance(enemy.transform.position, enemy.TargetPosition) < 0.1f)
             //kenapa nilainya 0.1? Karena untuk lebih mentoleransi perbedaan posisi, 
             //akan terlalu sulit jika perbedaan posisinya harus 0 atau sama persis
-            if(Vector2.Distance(enemy.transform.position, enemy.TargetPosition) < 0.1f)
             {
                 enemy.SetCurrentPathIndex(enemy.CurrentPathIndex + 1);
                 if(enemy.CurrentPathIndex < _enemyPaths.Length)
