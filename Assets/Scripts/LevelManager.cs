@@ -159,7 +159,7 @@ public class LevelManager : MonoBehaviour
         //Mathf.Max fungsinya adalah mengambil angka terbesar 
         //sehingga _currentlives disini tidak akan lebih kecil dari 0
         _currentLives = Mathf.Max(currentLives, 0);
-        _livesInfo.text = $"Total Enemy : {Mathf.Max(_enemyCounter, 0)}";
+        _livesInfo.text = $"Lives : {_currentLives}";
     }
 
     public void SetTotalEnemy(int totalEnemy)
