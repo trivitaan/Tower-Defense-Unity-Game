@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+
         //Fungsi Singleton
     private static LevelManager _instance = null;
     public static LevelManager Instance
@@ -23,16 +26,29 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Tower[] _towerPrefabs;
     [SerializeField] private Enemy[] _enemyPrefabs;
 
+    [SerializeField] private int _maxLives = 3;
+    [SerializeField] private int _totalEnemy = 15;
+    [SerializeField] private GameObject _panel;
+    [SerializeField] private Text _livesInfo;
+    [SerializeField] private Text _statusInfo;
+    [SerializeField] private Text _totalEnemyInfo;
+
     [SerializeField] private Transform[] _enemyPaths;
     [SerializeField] private float _spawnDelay = 5f;
 
     private List<Tower> _spawnedTowers = new List<Tower>();
     private List<Enemy> _spawnedEnemies = new List<Enemy>();
     private List<Bullet> _spawnedBullets = new List<Bullet>();
-
+    
+    private int _currentLives;
+    private int _enemyCounter;
     private float _runningSpawnDelay = 5f;
 
-
+    public bool isOver
+    {
+        get; 
+        private set;
+    }
 
     //Menampilkan seluruh tower yang tersedia pada UI Tower Selection 
     private void InstantiateAllTowerUI()
@@ -59,6 +75,16 @@ public class LevelManager : MonoBehaviour
         string enemyIndexString = (randomIndex + 1).ToString();
 
         GameObject newEnemyObj = _spawnedEnemies.Find(e => !e.gameObject.activeSelf && e.name.Contains(enemyIndexString))?.gameObject;
+        SetTotalEnemy(--_enemyCounter);
+        if(_enemyCounter < 0)
+        {
+            bool IsAllEnemyDestroyed = _spawnedEnemies.Find(e => e.gameObject.activeSelf) == null;
+            if(IsAllEnemyDestroyed)
+            {
+                SetGameOver(true);
+            }
+            return;
+        }
 
         if(newEnemyObj == null)
         {
@@ -119,15 +145,60 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public void ReduceLives(int value)
+    {
+        SetCurrentLives(_currentLives - value);
+        if(_currentLives <= 0)
+        {
+            SetGameOver(false);
+        }
+    }
+
+    public void SetCurrentLives(int currentLives)
+    {
+        //Mathf.Max fungsinya adalah mengambil angka terbesar 
+        //sehingga _currentlives disini tidak akan lebih kecil dari 0
+        _currentLives = Mathf.Max(currentLives, 0);
+        _livesInfo.text = $"Total Enemy : {Mathf.Max(_enemyCounter, 0)}";
+    }
+
+    public void SetTotalEnemy(int totalEnemy)
+    {
+        _enemyCounter = totalEnemy;
+        _totalEnemyInfo.text = $"Total Enemy: {Mathf.Max(_enemyCounter, 0)}";
+    }
+
+    public void SetGameOver(bool isWin)
+    {
+        isOver = true;
+        
+        _statusInfo.text = isWin?"You Win!" : "You Lose!";
+        _panel.gameObject.SetActive(true);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        SetCurrentLives(_maxLives);
+        SetTotalEnemy(_totalEnemy);
+        SetTotalEnemy(--_enemyCounter);
+    
         InstantiateAllTowerUI();     
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Jika menekan tombol R, fungsi restart akan terpanggil
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        if(isOver)
+        {
+            return;
+        }
+
         //Counter untuk spawn enemy dalam jeda waktu yang ditentukan
         //time.unscaledDelta time adalah delta time yang independent, tidak terpengaruh oleh apapun kecuali game object itu sendiri
         //jadi bisa digunakan sebagai penghitung waktu
